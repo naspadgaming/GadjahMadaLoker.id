@@ -1,0 +1,1 @@
+# GadjahMadaLoker.id

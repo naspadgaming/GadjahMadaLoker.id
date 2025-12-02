@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title> Gadjahmadaloker.id — Info Lowongan</title>
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#06b6d4; --muted:#94a3b8; --glass: rgba(255,255,255,0.03);
+      --radius:14px; --gap:16px; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; background:
+      linear-gradient(180deg, rgba(6,182,212,0.03), rgba(2,6,23,0.7)),
+      radial-gradient(600px 300px at 10% 10%, rgba(6,182,212,0.03), transparent),
+      var(--bg);
+      color:#9a5aee;
+      padding:28px;
+    }
+
+    header{
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      margin-bottom:20px;
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center;
+    }
+    .logo{
+      width:56px; height:56px; border-radius:12px; background:linear-gradient(135deg,var(--accent), #7c3aed);
+      display:flex; align-items:center; justify-content:center; font-weight:700; color:#062024; font-size:18px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+    }
+    h1{font-size:20px; margin:0}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+
+    .controls{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    }
+    .search{
+      display:flex; gap:8px; background:var(--glass); padding:8px; border-radius:12px; align-items:center;
+      min-width:320px;
+    }
+    .search input, .search select{
+      background:transparent; border:0; color:inherit; outline:none; padding:6px 8px; font-size:14px;
+    }
+    .btn{
+      background:linear-gradient(90deg,var(--accent), #7c3aed); color:#042025; border:0; padding:10px 14px; border-radius:12px; cursor:pointer;
+      font-weight:600;
+    }
+    .btn.ghost{background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted); padding:8px 12px}
+    main{display:grid; gap:18px; grid-template-columns: 1fr 420px; align-items:start;}
+    @media (max-width: 980px){ main{grid-template-columns:1fr} .controls{width:100%} .search{min-width:unset; width:100%} }
+
+    /* jobs list */
+    .jobs{
+      display:grid; gap:12px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:14px; border-radius:12px; display:flex; gap:12px; align-items:flex-start; box-shadow:0 6px 18px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .logo-sm{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#334155,#1e293b);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .job-body{flex:1}
+    .job-title{margin:0;font-size:16px;font-weight:700}
+    .comp{font-size:13px;color:var(--muted); margin:6px 0}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+    .meta .pill{background:rgba(255,255,255,0.02); padding:6px 8px;border-radius:999px;border:1px solid rgba(255,255,255,0.02)}
+    .actions{display:flex;gap:8px;align-items:center;margin-top:10px}
+    .small{font-size:13px;padding:6px 8px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+
+    /* sidebar */
+    aside{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.02);
+      height:fit-content;
+    }
+    .stat{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+    .stat strong{font-size:20px}
+    label{font-size:13px;color:var(--muted);display:block;margin-top:8px}
+    input[type="text"], textarea, select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;outline:none}
+    textarea{min-height:90px;resize:vertical}
+
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;padding:20px;z-index:999}
+    .modal{background:linear-gradient(180deg,#071025,#081224);border-radius:14px;padding:18px;width:100%;max-width:720px;border:1px solid rgba(255,255,255,0.03)}
+    .row{display:flex;gap:12px}
+    .col{flex:1}
+    .muted{color:var(--muted);font-size:13px;margin-top:6px}
+
+    footer{margin-top:22px;color:var(--muted);font-size:13px}
+    .empty{padding:28px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent); text-align:center;color:var(--muted)}
+
+    /* small responsiveness */
+    @media (max-width:520px){
+      .row{flex-direction:column}
+      .brand h1{font-size:18px}
+      .logo{width:48px;height:48px}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+  <div class="logo">GL.id</div>
+        <h1>Gadjahmadaloker.id</h1> 
+        <p class="lead">Temukan peluang kerja & pelatihan dekatmu</p>
+      </div>
+    </div>
+
+       
+  <div class="controls">
+    <div class="search">
+      <input id="qTitle" placeholder="Cari posisi, perusahaan...">
+      <select id="qLocation">
+        <option value="">Semua Lokasi</option>
+        <option>Jakarta</option><option>Bandung</option><option>Yogyakarta</option>
+        <option>Surabaya</option><option>Medan</option><option>Semarang</option>
+        <option>Makassar</option><option>Denpasar</option><option>Remote</option>
+      </select>
+      <button class="btn" id="btnSearch">Cari</button>
+    </div>
+    <button class="btn ghost" id="btnAdd">+ Posting Lowongan</button>
+    <button class="btn ghost" id="btnCV">📄 CV Saya</button>
+  </div>
+</header>
+
+
+<main>
+  <section>
+    <h2>Lowongan Terbaru</h2>
+    <div id="jobsList"></div>
+    <div id="emptyNotice" class="muted" style="display:none;margin-top:12px;">Tidak ada lowongan yang cocok.</div>
+  </section>
+  <aside>
+    <h2>Lamaran Saya</h2>
+    <div id="applyList" class="small muted">Belum ada lamaran.</div>
+  </aside>
+</main>
+
+<!-- Modal tambah lowongan -->
+<div class="modal-backdrop" id="modalAdd">
+  <div class="modal">
+    <h3>Tambah Lowongan</h3>
+    <input id="jobTitle" placeholder="Judul pekerjaan">
+    <input id="jobCompany" placeholder="Perusahaan">
+    <input id="jobLocation" placeholder="Lokasi">
+    <input id="jobSalary" placeholder="Gaji (opsional)">
+    <textarea id="jobDesc" placeholder="Deskripsi singkat"></textarea>
+    <div style="text-align:right;margin-top:10px;">
+      <button class="btn ghost" id="cancelAdd">Batal</button>
+      <button class="btn" id="saveAdd">Simpan</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal CV -->
+<div class="modal-backdrop" id="modalCV">
+  <div class="modal">
+    <h3>Unggah / Update CV Saya</h3>
+    <input id="cvName" placeholder="Nama lengkap">
+    <input id="cvEmail" placeholder="Email aktif">
+    <textarea id="cvSkill" placeholder="Keahlian & pengalaman singkat"></textarea>
+    <label class="small muted">Upload File CV (PDF/DOCX):</label>
+    <input type="file" id="cvFile" accept=".pdf,.doc,.docx">
+    <div id="cvPreview" class="small muted" style="margin-top:8px;"></div>
+    <div style="text-align:right;margin-top:12px;">
+      <button class="btn ghost" id="cancelCV">Batal</button>
+      <button class="btn" id="saveCV">Simpan CV</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== Constants ===== */
+const LS_JOBS = 'jobs_v3';
+const LS_CV = 'cv_data_v3';
+const LS_APPLY = 'apply_data_v3';
+
+/* ===== Helper Functions ===== */
+function genId(){ return 'j_'+Math.random().toString(36).slice(2,9); }
+function load(key){ return JSON.parse(localStorage.getItem(key)||'[]'); }
+function save(key,val){ localStorage.setItem(key,JSON.stringify(val)); }
+function escapeHtml(s){ return s? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''; }
+
+/* ===== Load Initial Data ===== */
+
+let jobs = load(LS_JOBS);
+if(jobs.length===0){
+  jobs = [
+    { id: genId(), title: "Frontend Developer", company: "PT Kreasi Digital", location: "Jakarta", type: "IT & Pengembangan", salary: "IDR 6.000.000 - 9.000.000", desc: "Membuat UI, React/Vue, CSS. Minimal 1 tahun pengalaman.", date: Date.now()-2*24*3600*1000 },
+      { id: genId(), title: "Admin Gudang", company: "UD Sumber Makmur", location: "Bandung", type: "Manufaktur", salary: "IDR 3.000.000 - 4.000.000", desc: "Inventory, packing, laporan harian.", date: Date.now()-6*24*3600*1000 },
+      { id: genId(), title: "Digital Marketing", company: "TokoOnline.co", location: "Remote", type: "Sales & Marketing", salary: "IDR 4.000.000 - 6.000.000", desc: "Iklan Facebook/Instagram, SEO, konten.", date: Date.now()-1*24*3600*1000 }
+    ];
+
+  save(LS_JOBS,jobs);
+}
+
+/* ===== Render Functions ===== */
+const jobsListEl = document.getElementById('jobsList');
+const applyListEl = document.getElementById('applyList');
+const emptyNotice = document.getElementById('emptyNotice');
+
+function renderJobs(list = jobs){
+  jobsListEl.innerHTML='';
+  if(list.length===0){ emptyNotice.style.display='block'; return; }
+  emptyNotice.style.display='none';
+  list.forEach(j=>{
+    const div = document.createElement('div');
+    div.className='card';
+    div.innerHTML=`
+      <strong>${escapeHtml(j.title)}</strong><br>
+      <span class="muted">${escapeHtml(j.company)} • ${escapeHtml(j.location)}</span><br>
+      <span class="small">${escapeHtml(j.salary||'-')}</span>
+      <p class="small">${escapeHtml(j.desc)}</p>
+              <button class="btn ghost" onclick="applyJob('${j.id}')">Lamar Sekarang</button>
+     `;
+    jobsListEl.appendChild(div);
+  });
+}
+
+function renderApply(){
+  const data = load(LS_APPLY);
+  applyListEl.innerHTML='';
+  if(data.length===0){ applyListEl.textContent='Belum ada lamaran.'; return; }
+  data.forEach(a=>{
+    const p = document.createElement('p');
+    p.className='small';
+    p.innerHTML=`✅ ${escapeHtml(a.title)} <br><span class="muted">${escapeHtml(a.company)} (${a.date})</span>`;
+    applyListEl.appendChild(p);
+  });
+}
+
+/* ===== Modal Logic ===== */
+const modalAdd = document.getElementById('modalAdd');
+const modalCV = document.getElementById('modalCV');
+document.getElementById('btnAdd').onclick=()=>{ modalAdd.style.display='flex'; clearJobForm(); };
+document.getElementById('cancelAdd').onclick=()=>modalAdd.style.display='none';
+document.getElementById('btnCV').onclick=()=>{ modalCV.style.display='flex'; loadCVForm(); };
+document.getElementById('cancelCV').onclick=()=>modalCV.style.display='none';
+window.onclick = (e)=>{ if(e.target===modalAdd) modalAdd.style.display='none'; if(e.target===modalCV) modalCV.style.display='none'; };
+
+/* ===== Job Form ===== */
+function clearJobForm(){
+  document.getElementById('jobTitle').value='';
+  document.getElementById('jobCompany').value='';
+  document.getElementById('jobLocation').value='';
+  document.getElementById('jobSalary').value='';
+  document.getElementById('jobDesc').value='';
+}
+document.getElementById('saveAdd').onclick=()=>{
+  const title=document.getElementById('jobTitle').value.trim();
+  const company=document.getElementById('jobCompany').value.trim();
+  const location=document.getElementById('jobLocation').value.trim();
+  const salary=document.getElementById('jobSalary').value.trim();
+  const desc=document.getElementById('jobDesc').value.trim();
+  if(!title||!company){ alert('Isi judul & perusahaan!'); return; }
+  jobs.unshift({id:genId(),title,company,location,salary,desc});
+  save(LS_JOBS,jobs);
+  renderJobs();
+  modalAdd.style.display='none';
+};
+
+/* ===== Apply Job ===== */
+function applyJob(id){
+  const cv = JSON.parse(localStorage.getItem(LS_CV)||'{}');
+  if(!cv.name||!cv.email){ alert('Isi CV terlebih dahulu!'); return; }
+  const j = jobs.find(x=>x.id===id);
+  if(!j) return;
+  const list = load(LS_APPLY);
+  list.unshift({title:j.title,company:j.company,date:new Date().toLocaleDateString()});
+  save(LS_APPLY,list);
+  alert('Lamaran dikirim untuk '+j.title);
+  renderApply();
+}
+
+/* ===== CV Logic ===== */
+function loadCVForm(){
+  const cv = JSON.parse(localStorage.getItem(LS_CV)||'{}');
+  document.getElementById('cvName').value=cv.name||'';
+  document.getElementById('cvEmail').value=cv.email||'';
+  document.getElementById('cvSkill').value=cv.skill||'';
+  document.getElementById('cvPreview').textContent=cv.fileName? 'File tersimpan: '+cv.fileName : 'Belum ada file.';
+}
+document.getElementById('saveCV').onclick=()=>{
+  const name=document.getElementById('cvName').value.trim();
+  const email=document.getElementById('cvEmail').value.trim();
+  const skill=document.getElementById('cvSkill').value.trim();
+  const fileInput=document.getElementById('cvFile');
+  if(!name||!email){ alert('Nama & email wajib diisi!'); return; }
+  let fileName=null,fileData=null;
+  if(fileInput.files.length>0){
+    const file = fileInput.files[0];
+    fileName=file.name;
+    const reader = new FileReader();
+    reader.onload=function(){
+      fileData=reader.result;
+      const data={name,email,skill,fileName,fileData};
+      save(LS_CV,data);
+      document.getElementById('cvPreview').textContent='File tersimpan: '+fileName;
+      modalCV.style.display='none';
+      alert('CV tersimpan!');
+    };
+    reader.readAsDataURL(file);
+  } else {
+    const old = JSON.parse(localStorage.getItem(LS_CV)||'{}');
+    const data={name,email,skill,fileName:old.fileName||null,fileData:old.fileData||null};
+    save(LS_CV,data);
+    modalCV.style.display='none';
+    alert('CV tersimpan!');
+  }
+};
+
+/* ===== Search ===== */
+const qTitle = document.getElementById('qTitle');
+const qLocation = document.getElementById('qLocation');
+document.getElementById('btnSearch').onclick = ()=>{ applySearch(); };
+function applySearch(){
+  const q = qTitle.value.trim().toLowerCase();
+  const loc = qLocation.value.trim().toLowerCase();
+  const filtered = jobs.filter(j=>{
+    const matchQ = !q || (j.title+' '+j.company+' '+j.desc).toLowerCase().includes(q);
+    const matchLoc = !loc || (j.location||'').toLowerCase().includes(loc);
+    return matchQ && matchLoc;
+  });
+  renderJobs(filtered);
+}
+
+/* ===== Init ===== */
+renderJobs();
+renderApply();
+</script>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 # GadjahMadaLoker.id 
-Sistem Informasi Lowongan dan Pengelolaan CV**
+Sistem Informasi Lowongan dan Pengelolaan CV
 
 ## **1. Tentang Proyek**
 
@@ -91,4 +91,4 @@ Proyek ini diharapkan menjadi platform lowongan kerja yang:
 * Dapat berkembang menuju layanan karir profesional yang lebih komprehensif.
 
 
-Tinggal bilang saja!
+

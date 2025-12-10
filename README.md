@@ -30,6 +30,7 @@ Tujuan utama proyek ini adalah menyediakan platform lowongan kerja yang ringkas,
 * Backend dibangun menggunakan C++ dengan pustaka HTTP server (misalnya cpp-httplib).
 * Mendukung permintaan HTTP GET, POST, dan pengiriman berkas.
 * Mengolah request dari frontend dan menghubungkannya dengan database.
+* BACKEND di sini masih bersifat konsep atau simulasi kerja sistem tersebut
 
 ### **d. Integrasi Database Pihak Ketiga**
 
@@ -45,8 +46,8 @@ Tujuan utama proyek ini adalah menyediakan platform lowongan kerja yang ringkas,
 2. Ketika ingin melamar, pengguna dapat **mengisi data dan mengunggah CV** melalui form yang tersedia.
 3. Berkas CV dikirim oleh browser ke REST API backend.
 4. **Server C++ menerima file**, menyimpannya ke folder server, dan mencatat datanya ke database pihak ketiga.
-5. Admin atau pihak ketiga dapat **mengakses data lowongan dan daftar CV** melalui dashboard atau endpoint API.
-6. Sistem dapat dikembangkan lebih lanjut sehingga file CV dapat dianalisis, diproses, atau diunduh kembali.
+5. Admin atau pihak ketiga dapat **mengakses data lowongan dan daftar CV** melalui dashboard atau endpoint API, belum terealisasi. Masih rencana pengembangan
+6. Sistem dapat dikembangkan lebih lanjut sehingga file CV dapat dianalisis, diproses, atau diunduh kembali (rencana pengembangan lanjutan)
 
 ---
 
